@@ -1,0 +1,12 @@
+{
+  "name": "com.joe-conticello.visual-effects",
+  "version": "1.0.0",
+  "displayName": "Visual Effects",
+  "description": "Reusable Unity visual-effect lifecycle and sprite beam components.",
+  "unity": "6000.0",
+  "keywords": [
+    "vfx",
+    "beam",
+    "lightning"
+  ]
+}
