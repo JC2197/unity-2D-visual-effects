@@ -84,6 +84,7 @@ namespace JoeConticello.VisualEffects
         private float cachedSegmentHeight;
         private int cachedSegmentCount;
         private bool endTriggered;
+        private float angle;
 
         private void Start()
         {
@@ -130,12 +131,12 @@ namespace JoeConticello.VisualEffects
 
             if (vertexSpriteFrames != null && vertexSpriteFrames.Length > 0 && vertexSpriteFrames[0] != null)
             {
-                originVertex = SpawnVertex("VertexOrigin", transform, new Vector3(startOffset.x, startOffset.y, 0f), vertexSpriteFrames[0]);
+                originVertex = SpawnVertex("VertexOrigin", transform, new Vector3(startOffset.x, startOffset.y, 0f), vertexSpriteFrames[0], angle);
             }
 
             if (targetVertexSpriteFrames != null && targetVertexSpriteFrames.Length > 0 && targetVertexSpriteFrames[0] != null)
             {
-                targetVertex = SpawnVertex("VertexTarget", transform, Vector3.zero, targetVertexSpriteFrames[0]);
+                targetVertex = SpawnVertex("VertexTarget", transform, Vector3.zero, targetVertexSpriteFrames[0], angle);
             }
 
             for (int i = 0; i < segmentCount; i++)
@@ -321,11 +322,12 @@ namespace JoeConticello.VisualEffects
             sr.SetPropertyBlock(mpb);
         }
 
-        private SpriteRenderer SpawnVertex(string goName, Transform parent, Vector3 localPos, Sprite sprite)
+        private SpriteRenderer SpawnVertex(string goName, Transform parent, Vector3 localPos, Sprite sprite, float angle)
         {
             GameObject go = new GameObject(goName);
             go.transform.SetParent(parent, false);
             go.transform.localPosition = localPos;
+            go.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
 
             SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;
