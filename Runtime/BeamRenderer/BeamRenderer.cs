@@ -291,7 +291,6 @@ namespace JoeConticello.VisualEffects
             }
             if (targetVertex != null)
             {
-                targetVertex.transform.localPosition = new Vector3(startOffset.x, startOffset.y, 0f);
                 targetVertex.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(-startOffset.x, startOffset.y) * Mathf.Rad2Deg);
             }
         }
