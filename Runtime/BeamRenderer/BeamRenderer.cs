@@ -284,7 +284,16 @@ namespace JoeConticello.VisualEffects
             beamRoot.localScale = new Vector3(1f, scaleY, 1f);
 
             if (originVertex != null)
+            {
                 originVertex.transform.localPosition = new Vector3(startOffset.x, startOffset.y, 0f);
+                originVertex.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(-startOffset.x, startOffset.y) * Mathf.Rad2Deg);
+
+            }
+            if (targetVertex != null)
+            {
+                targetVertex.transform.localPosition = new Vector3(startOffset.x, startOffset.y, 0f);
+                targetVertex.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(-startOffset.x, startOffset.y) * Mathf.Rad2Deg);
+            }
         }
 
         private void ShowAll()
